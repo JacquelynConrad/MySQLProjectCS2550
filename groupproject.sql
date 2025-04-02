@@ -1,1 +1,59 @@
 CREATE DATABASE GroupProject;
+USE GroupProject;
+
+CREATE TABLE Authors (
+Author_ID INT NOT NULL AUTO_INCREMENT,
+First_name VARCHAR (20),
+Last_name VARCHAR (30) NOT NULL,
+PRIMARY KEY (Author_ID)
+);
+
+CREATE TABLE LibrariesFormatsApps (
+Library VARCHAR(12) NOT NULL,
+Format_App VARCHAR(20) NOT NULL,
+ID VARCHAR(3),
+PRIMARY KEY (ID)
+);
+
+CREATE TABLE Titles (
+Author_ID INT NOT NULL,
+Book_ID INT NOT NULL AUTO_INCREMENT,
+Title VARCHAR (40) NOT NULL,
+Subtitle VARCHAR (40),
+PRIMARY KEY(Book_ID),
+FOREIGN KEY(Author_ID)
+);
+
+CREATE TABLE Reviews (
+Book_ID INT,
+Rating	INT,
+Written_Review VARCHAR (50),
+FOREIGN KEY (Book_ID)
+);
+
+CREATE TABLE BookDetails (
+Book_ID INT,
+Price	DECIMAL (5, 2),
+ISBN   INT,
+Series VARCHAR (20),
+Release_Date DATE,
+CHECK (ISBN > 999999999999 AND ISBN < 10000000000000),	/* ISBNs are 13 digits, the checks make sure of that*/
+FOREIGN KEY (Book_ID)
+);
+
+CREATE TABLE Genres (
+Book_ID INT NOT NULL UNIQUE, 
+Genre VARCHAR (30) NOT NULL,
+FOREIGN KEY (Book_ID)
+);
+
+
+CREATE TABLE Availability (
+Book_ID INT NOT NULL, 
+Library_ID VARCHAR(3) DEFAULT (NULL),
+FOREIGN KEY (Book_ID, Library_ID)
+);
+
+
+
+
