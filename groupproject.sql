@@ -1,5 +1,6 @@
 /*Group Members: Jacquelyn Conrad, Sarah Allmendinger, Reagan Asher
-Project: Book Database*/
+Project: Book Database
+*/
 CREATE DATABASE GroupProject;
 USE GroupProject;
 
