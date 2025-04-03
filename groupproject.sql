@@ -8,14 +8,6 @@ First_name VARCHAR (20) DEFAULT NULL,
 PRIMARY KEY (Author_ID)
 );
 
-CREATE TABLE LibrariesFormatsApps(
-Library VARCHAR(12) NOT NULL,
-Format_App VARCHAR(20) NOT NULL,
-ID VARCHAR(3),
-PRIMARY KEY (ID),
-CHECK (ID = WPB OR ID = WPA OR ID = DPB OR ID = DPA OR ID = WHB OR ID = WHA OR ID = DHB OR ID = DHA OR ID = BLB OR ID = BLA)
-);
-
 CREATE TABLE Titles (
 Author_ID INT NOT NULL,
 Author_ID_2 INT DEFAULT 1,
@@ -51,6 +43,15 @@ Genre VARCHAR (30) NOT NULL,
 FOREIGN KEY (Book_ID) REFERENCES Titles(Book_ID)
 );
 
+/*NOT YET WORKING*/
+CREATE TABLE LibrariesFormatsApps(
+Library VARCHAR(12) NOT NULL,
+Format_App VARCHAR(20) NOT NULL,
+ID VARCHAR(3),
+PRIMARY KEY (ID),
+CHECK (ID = WPB OR ID = WPA OR ID = DPB OR ID = DPA OR ID = WHB OR ID = WHA OR ID = DHB OR ID = DHA OR ID = BLB OR ID = BLA)
+);
+
 CREATE TABLE Availability (
 Book_ID INT, 
 Library_ID VARCHAR(3) DEFAULT (NULL),
@@ -59,6 +60,7 @@ FOREIGN KEY (Book_ID) REFERENCES Titles(Book_ID),
 FOREIGN KEY (Library_ID) REFERENCES LibrariesFormatsApps(ID)
 );
 
+/*WORKING*/
 INSERT INTO Authors (Author_ID, Last_Name)
 VALUES ( 
 (1),("-")), -- so it's always 1
