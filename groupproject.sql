@@ -45,13 +45,15 @@ Genre VARCHAR (30) NOT NULL,
 FOREIGN KEY (Book_ID) REFERENCES Titles(Book_ID)
 );
 
-/*NOT YET WORKING*/
+/*current ID OPTIONS(ID = WPB OR ID = WPA OR ID = DPB OR ID = DPA OR ID = WHB OR ID = WHA OR ID = DHB OR ID = DHA OR ID = BLB OR ID = BLA)*/
+/*current library options (Davis, Weber, Beehive Consortium)
+  current format options physical book, physical audiobook, hoopla book, hoopla audiobook, libby book, libby audiobook)*/
+
 CREATE TABLE LibrariesFormatsApps(
 Library VARCHAR(12) NOT NULL,
 Format_App VARCHAR(20) NOT NULL,
 ID VARCHAR(3),
-PRIMARY KEY (ID),
-CHECK (ID = WPB OR ID = WPA OR ID = DPB OR ID = DPA OR ID = WHB OR ID = WHA OR ID = DHB OR ID = DHA OR ID = BLB OR ID = BLA)
+PRIMARY KEY (ID) 
 );
 
 CREATE TABLE Availability (
@@ -62,7 +64,6 @@ FOREIGN KEY (Book_ID) REFERENCES Titles(Book_ID),
 FOREIGN KEY (Library_ID) REFERENCES LibrariesFormatsApps(ID)
 );
 
-/*WORKING*/
 INSERT INTO Authors (Author_ID, Last_Name)
 VALUES ( 
 (1),("-")), -- so it's always 1
@@ -193,5 +194,6 @@ VALUES (
 (("Harris"), ("Robert J.")
 );
 
-
+select *
+From authors;
 
