@@ -41,9 +41,9 @@ CHECK (ISBN < 10000000000000)		-- ISBNs are 13 digits, the checks make sure of t
 );
 
 CREATE TABLE Genres (
-Book_ID INT, 
+Genre_ID INT, 
 Genre VARCHAR (30) NOT NULL,
-FOREIGN KEY (Book_ID) REFERENCES Titles(Book_ID)
+Primary Key (Genre_ID)
 );
 
 /*current ID OPTIONS(ID = WPB OR ID = WPA OR ID = DPB OR ID = DPA OR ID = WHB OR ID = WHA OR ID = DHB OR ID = DHA OR ID = BLB OR ID = BLA)*/
