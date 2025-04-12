@@ -22,16 +22,16 @@ FOREIGN KEY (Author_ID) REFERENCES Authors(Author_ID),
 FOREIGN KEY (Author_ID_2) REFERENCES Authors (Author_ID)
 );
 
-CREATE TABLE Reviews (
-Book_ID INT,
-Rating	INT,
-Written_Review VARCHAR (50),
-FOREIGN KEY (Book_ID) REFERENCES Titles(Book_ID)
+CREATE TABLE Genres (
+Genre_ID INT, 
+Genre VARCHAR (30) NOT NULL,
+Primary Key (Genre_ID)
 );
 
 CREATE TABLE BookDetails (
 Book_ID INT,
 Price  DECIMAL (5, 2),
+Genre_ID VarChar(2),
 ISBN   INT,
 Series VARCHAR (20),
 Release_Date	DATE,
@@ -40,11 +40,8 @@ CHECK (ISBN > 999999999999),
 CHECK (ISBN < 10000000000000)		-- ISBNs are 13 digits, the checks make sure of that
 );
 
-CREATE TABLE Genres (
-Genre_ID INT, 
-Genre VARCHAR (30) NOT NULL,
-Primary Key (Genre_ID)
-);
+
+
 
 /*current ID OPTIONS(ID = WPB OR ID = WPA OR ID = DPB OR ID = DPA OR ID = WHB OR ID = WHA OR ID = DHB OR ID = DHA OR ID = BLB OR ID = BLA)*/
 /*current library options (Davis, Weber, Beehive Consortium)
