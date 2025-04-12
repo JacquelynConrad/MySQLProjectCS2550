@@ -92,4 +92,3 @@ VALUES (
 
 select *
 From authors;
-
