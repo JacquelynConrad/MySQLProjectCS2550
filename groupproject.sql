@@ -23,7 +23,7 @@ FOREIGN KEY (Author_ID_2) REFERENCES Authors (Author_ID)
 );
 
 CREATE TABLE Genres (
-Genre_ID INT, 
+Genre_ID VARCHAR (2), 
 Genre VARCHAR (30) NOT NULL,
 Primary Key (Genre_ID)
 );
@@ -92,3 +92,16 @@ VALUES (
 
 select *
 From authors;
+
+INSERT INTO Genres (Genre_ID, Genre)
+VALUES (
+	("Ro"), ("Romance")),
+	(("F"), ("Fantasy")),
+	(("S"), ("Sci-fi")),
+	(("H"), ("Historical Fiction")),
+	(("R"), ("Realistic Fiction")),
+	(("M"), ("Mystery")),
+	(("Ho"), ("Horror")),
+	(("D"), ("Dystopian")),
+	(("Ac"), ("Action")
+);
