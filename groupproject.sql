@@ -43,20 +43,21 @@ CHECK (ISBN < 10000000000000)		-- ISBNs are 13 digits, the checks make sure of t
 
 
 
-/*current ID OPTIONS(ID = WPB OR ID = WPA OR ID = DPB OR ID = DPA OR ID = WHB OR ID = WHA OR ID = DHB OR ID = DHA OR ID = BLB OR ID = BLA)*/
-/*current library options (Davis, Weber, Beehive Consortium)
-  current format options physical book, physical audiobook, hoopla book, hoopla audiobook, libby book, libby audiobook)*/
+
+/*current library options (Davis, Weber)
+  current format options physical book, physical Audiobook, Digital book, Digital Audiobook
+  W = weber, D= davis, I = Digital, A = Audiobook, B= Print, E =  every format, M=minus. S = Print book & eAudiobook*/
 
 CREATE TABLE LibrariesFormatsApps(
-Library VARCHAR(12) NOT NULL,
-Format_App VARCHAR(20) NOT NULL,
-ID VARCHAR(3),
+ID VARCHAR(5),
+Library VARCHAR(7) NOT NULL,
+Format_App VARCHAR(60) NOT NULL,
 PRIMARY KEY (ID) 
 );
 
 CREATE TABLE Availability (
 Book_ID INT, 
-Library_ID VARCHAR(3) DEFAULT (NULL),
+Library_ID VARCHAR(5) DEFAULT (NULL),
 PRIMARY KEY (Book_ID),
 FOREIGN KEY (Book_ID) REFERENCES Titles(Book_ID),
 FOREIGN KEY (Library_ID) REFERENCES LibrariesFormatsApps(ID)
@@ -64,8 +65,8 @@ FOREIGN KEY (Library_ID) REFERENCES LibrariesFormatsApps(ID)
 
 INSERT INTO Authors (Author_ID, Last_Name)
 VALUES ( 
-(1),("-")), -- so it's always 1
-((2), ("Anonymous") -- so it's always 2
+(1),("-")), -- so it"s always 1
+((2), ("Anonymous") -- so it"s always 2
 );
 
 INSERT INTO Authors (Last_name, First_name)
@@ -105,3 +106,27 @@ VALUES (
 	(("D"), ("Dystopian")),
 	(("Ac"), ("Action")
 );
+
+INSERT INTO LibrariesFormatsApps (ID, Library, Format_App)
+VALUES (
+	("D"), ("Davis"), ("Audiobook & Print Book at Davis County only")),
+	(("W"), ("Weber"), ("Audiobook & Print Book at Weber County only")),
+	(("A"), ("All"), ("Audiobooks on CD only")),
+	(("B"), ("All"), ("Print books only")),
+	(("I"), ("Digital"), ("Digital Audiobook & Print versions only")),
+	(("E"), ("All"), ("All versions available")),
+	(("S"), ("All"), ("Print book version and Digital Audiobook version")),
+	(("IDB"), ("All"), ("All Digital versions & Print version at Davis County")),
+	(("IWB"), ("All"), ("All Digital versions & Print version at Weber County")),
+	(("WB"), ("Weber"), ("Print version at Weber only")),
+	(("DB"), ("Davis"), ("Print version at Davis only")),
+	(("WA"), ("Weber"), ("Audiobook version at Weber only")),
+	(("DA"), ("Davis"), ("Audiobook version at Davis only")),
+	(("EMIB"), ("All"), ("Every format except Digital Print versions")),
+	(("EMIA"), ("All"), ("Every format except Digital Audiobook versions")), 
+	(("DEWS"), ("All"), ("Davis all formats, Weber Print book and Digital Audiobook")),
+	(("WEDS"), ("All"), ("Weber all formats, Davis Print book and Digital Audiobook")),
+	(("EMWIB"), ("All"), ("Everything, but a Digital Print version at Weber")),
+	(("EMDIB"), ("All"), ("Everything, but a Digital Print version at Davis")),
+	(("EMA"), ("All"), ("Everything, but Physical Audiobook books")	
+    );
