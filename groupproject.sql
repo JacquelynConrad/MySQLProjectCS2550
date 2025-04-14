@@ -1,4 +1,4 @@
-/*Group Members: Jacquelyn Conrad, Sarah Allmendinger, Reagan Asher
+titles/*Group Members: Jacquelyn Conrad, Sarah Allmendinger, Reagan Asher
 Project: Book Database
 */
 CREATE DATABASE GroupProject;
@@ -94,6 +94,37 @@ VALUES (
 
 select *
 From authors;
+INSERT INTO Titles (Author_ID, Author_ID_2, Book_ID, Title)
+VALUES (
+(4), (NULL), (1), ('Dark Lord of Derkholm')), 
+((6), (NULL), (2), ('Dealing with Dragons')), 
+((5), (NULL), (3), ('Steelheart')), 
+((1), (NULL), (4), ('Anne of Green Gables')), 
+((1), (NULL), (5), ('Anne of Avonlea')), 
+((1), (NULL), (6), ('Anne of The Island')), 
+((1), (NULL), (7), ('Anne of Windy Poplars')), 
+((2), (12), (8), ('Queens Own Fool')), 
+((10), (NULL), (9), ('Fahrenheit 451')), 
+((8), (NULL), (10), ('A Curious Beginning')),
+((7), (11), (11), ('The Heist')),
+((14), (NULL), (12), ('The Screaming Staircase')), 
+((14), (NULL), (13), ('The Whispering Skull')), 
+((14), (NULL), (14), ('The Hollow Boy')), 
+((14), (NULL), (15), ('The Creeping Shadow')), 
+((14), (NULL), (16), ('The Empty Grave')), 
+((3), (NULL), (17), ('Ella Enchanted')), 
+((9), (NULL), (18), ('Games in the Ballroom')), 
+((13),( NULL), (19), ('IT'));
+
+UPDATE titles
+SET Author_ID = Author_ID + 2
+WHERE Author_ID >= 3;
+
+UPDATE titles
+SET Author_ID_2 = Author_ID_2 + 2
+WHERE Author_ID_2 > 2;
+
+
 
 INSERT INTO Genres (Genre_ID, Genre)
 VALUES (
