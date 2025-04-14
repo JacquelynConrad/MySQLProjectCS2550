@@ -40,10 +40,6 @@ CHECK (ISBN > 999999999999),
 CHECK (ISBN < 10000000000000)		-- ISBNs are 13 digits, the checks make sure of that
 );
 
-
-
-
-
 /*current library options (Davis, Weber)
   current format options physical book, physical Audiobook, Digital book, Digital Audiobook
   W = weber, D= davis, I = Digital, A = Audiobook, B= Print, E =  every format, M=minus. S = Print book & eAudiobook*/
@@ -91,6 +87,11 @@ VALUES (
 ("King"), ("Stephen") 
 );
 
+INSERT INTO Authors (Last_Name, First_Name)
+VALUES ( 
+("Stevermer"), ("Caroline") 
+);
+
 select *
 From authors;
 
@@ -130,3 +131,9 @@ VALUES (
 	(("EMDIB"), ("All"), ("Everything, but a Digital Print version at Davis")),
 	(("EMA"), ("All"), ("Everything, but Physical Audiobook books")	
     );
+
+SELECT * 
+FROM LibrariesFormatsApps;
+
+SELECT * 
+FROM Genres;
