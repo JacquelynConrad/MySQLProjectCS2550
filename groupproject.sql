@@ -1,4 +1,4 @@
-titles/*Group Members: Jacquelyn Conrad, Sarah Allmendinger, Reagan Asher
+/*Group Members: Jacquelyn Conrad, Sarah Allmendinger, Reagan Asher
 Project: Book Database
 */
 CREATE DATABASE GroupProject;
@@ -32,8 +32,8 @@ CREATE TABLE BookDetails (
 Book_ID INT,
 Price  DECIMAL (5, 2),
 Genre_ID VarChar(2),
-ISBN   INT,
-Series VARCHAR (20),
+ISBN   BIGINT,
+Series VARCHAR (30),
 Release_Date	DATE,
 FOREIGN KEY (Book_ID) REFERENCES Titles(Book_ID),
 CHECK (ISBN > 999999999999),
@@ -61,8 +61,7 @@ FOREIGN KEY (Library_ID) REFERENCES LibrariesFormatsApps(ID)
 
 INSERT INTO Authors (Author_ID, Last_Name)
 VALUES ( 
-(1),("-")), -- so it"s always 1
-((2), ("Anonymous") -- so it"s always 2
+(1), ("Anonymous") -- so it"s always 2
 );
 
 INSERT INTO Authors (Last_name, First_name)
@@ -92,8 +91,6 @@ VALUES (
 ("Stevermer"), ("Caroline") 
 );
 
-select *
-From authors;
 INSERT INTO Titles (Author_ID, Author_ID_2, Book_ID, Title)
 VALUES (
 (4), (NULL), (1), ('Dark Lord of Derkholm')), 
@@ -117,13 +114,16 @@ VALUES (
 ((13),( NULL), (19), ('IT'));
 
 UPDATE titles
-SET Author_ID = Author_ID + 2
+SET Author_ID = Author_ID + 1
 WHERE Author_ID >= 3;
 
 UPDATE titles
-SET Author_ID_2 = Author_ID_2 + 2
+SET Author_ID_2 = Author_ID_2 + 1
 WHERE Author_ID_2 > 2;
 
+UPDATE Titles
+SET Author_ID = Author_ID + 1
+WHERE Author_ID > 0 AND Author_ID < 3;
 
 
 INSERT INTO Genres (Genre_ID, Genre)
@@ -163,8 +163,41 @@ VALUES (
 	(("EMA"), ("All"), ("Everything, but Physical Audiobook books")	
     );
 
+INSERT INTO BookDetails (Book_ID, Genre_ID, Price, ISBN, Series, Release_Date)
+VALUES (
+	(1), ("F"), (8.99), (9780575075368), ("Derkholm"), ("2003-08-01")),
+	((2), ("F"), (7.99), (9780152045661), ("Enchanted Forest Chronicles"), ("1990-09-18")),
+	((3), ("H"), (7.99), (9781442490000), ("Anne of Green Gables"), ("1908-01-01")),
+	((4), ("H"), (7.99), (9780553213140), ("Anne of Green Gables"), ("1909-01-14")),
+	((5), ("H"), (7.99), (9780553213171), ("Anne of Green Gables"), ("1915-11-01")),
+	((6), ("H"), (7.99), (9780808516965), ("Anne of Green Gables"), ("1936-06-28")),
+	((7), ("H"), (12.99), (9780698119185), ("Stuart Quartet"), ("2001-11-12")),
+	((8), ("D"), (28.00), (9781451673319), (NULL), ("1953-10-19")),
+	((9), ("M"), (19.00), (9780451476029), ("Veronica Speedwell"), ("2015-09-01")),
+	((10), ("M"), (9.99), (9780345543066), ("Fox and O-Hare"), ("2013-06-18")),
+	((11), ("F"), (9.99), (9780857532015), ("Lockwood & Co."), ("2013-08-29")),
+	((12), ("F"), (9.99), (9781423164920), ("Lockwood & Co."), ("2014-09-16")),
+	((13), ("F"), (9.99), (9781484709689), ("Lockwood & Co."), ("2015-09-15")),
+	((14), ("F"), (9.99), (9781484709672), ("Lockwood & Co."), ("2016-09-13")),
+	((15), ("F"), (9.99), (9781484798577), ("Lockwood & Co."), ("2017-09-12")),
+	((16), ("Ro"), (9.99), (9780064407052), ("Ella Enchanted"), ("2024-08-01")),
+	((17), ("Ro"), (15.99), (9798200928552), (NULL), ("2022-05-03")),
+	((18), ("Ho"), (12.99), (9780450411434), (NULL), ("1986-09-15")
+);
+
+INSERT 
+
+select *
+From authors;
+
+SELECT *
+FROM Titles;
+
 SELECT * 
 FROM LibrariesFormatsApps;
 
 SELECT * 
 FROM Genres;
+
+SELECT * 
+FROM bookDetails;
