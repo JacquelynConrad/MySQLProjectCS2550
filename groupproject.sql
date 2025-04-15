@@ -100,7 +100,7 @@ VALUES (
 ((1), (NULL), (5), ('Anne of Avonlea')), 
 ((1), (NULL), (6), ('Anne of The Island')), 
 ((1), (NULL), (7), ('Anne of Windy Poplars')), 
-((2), (12), (8), ('Queens Own Fool')), 
+((2), (12), (8), ("Queen's Own Fool")), 
 ((10), (NULL), (9), ('Fahrenheit 451')), 
 ((8), (NULL), (10), ('A Curious Beginning')),
 ((7), (11), (11), ('The Heist')),
