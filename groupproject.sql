@@ -36,6 +36,7 @@ ISBN   BIGINT,
 Series VARCHAR (30),
 Release_Date	DATE,
 FOREIGN KEY (Book_ID) REFERENCES Titles(Book_ID),
+FOREIGN KEY (Genre_ID) REFERENCES Genres(Genre_ID),
 CHECK (ISBN > 999999999999),
 CHECK (ISBN < 10000000000000)		-- ISBNs are 13 digits, the checks make sure of that
 );
@@ -227,3 +228,21 @@ FROM bookDetails;
 
 SELECT * 
 FROM Availability;
+/*Single Table Query- Presents the books with multiple authors*/
+SELECT (Book_ID, Title)
+FROM Titles
+WHERE Author_ID_2 > 1;
+
+
+/*Group By Query - Finds the number of books that are fantasy*/
+SELECT  COUNT(*), Genre_ID
+FROM BookDetails
+GROUP BY Genre_ID
+HAVING Genre_ID = “F”;
+
+/*Self Join Query- shows which authors write together and contribute to the feeling of a book, or can be searched for, for the rest of the series.*/
+SELECT A.Author_ID, B.Author_ID_2
+FROM Titles A
+INNER JOIN Titles B
+ON A.Book_ID = B.Book_ID AND B.Author_ID_2 > 1;
+
