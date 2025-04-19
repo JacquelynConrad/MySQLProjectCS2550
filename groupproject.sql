@@ -1,7 +1,7 @@
 /*Group Members: Jacquelyn Conrad, Sarah Allmendinger, Reagan Asher
 Project: Book Database
 */
-Drop Database GroupProject;
+DROP DATABASE GroupProject;
 CREATE DATABASE GroupProject;
 USE GroupProject;
 
@@ -13,8 +13,8 @@ PRIMARY KEY (Author_ID)
 );
 
 CREATE TABLE Titles (
-Author_ID INT NOT NULL,
-Author_ID_2 INT DEFAULT 1,
+Author_ID INT NOT NULL DEFAULT 1,
+Author_ID_2 INT DEFAULT NULL,
 Book_ID INT NOT NULL AUTO_INCREMENT,
 Title VARCHAR (40) NOT NULL,
 Subtitle VARCHAR (40) DEFAULT NULL,
