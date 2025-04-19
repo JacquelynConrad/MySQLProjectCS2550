@@ -112,7 +112,7 @@ VALUES (
 ((4), (NULL), (16), ('The Empty Grave')), 
 ((5), (NULL), (17), ('Ella Enchanted')), 
 ((11), (NULL), (18), ('Games in the Ballroom')), 
-((14),( NULL), (19), ('IT'));
+((15),( NULL), (19), ('IT'));
 
 INSERT INTO Genres (Genre_ID, Genre)
 VALUES (
@@ -217,26 +217,22 @@ SELECT *
 FROM Availability;
 
 /*Single Table Query- Presents the books with multiple authors*/
-SELECT (Book_ID, Title)
+SELECT Author_ID, Author_ID_2, Book_ID, Title
 FROM Titles
-WHERE Author_ID_2 > 1;
+WHERE Author_ID_2 > 0;
+
 
 /*Group By Query - Finds the number of books that are fantasy*/
 SELECT  COUNT(*), Genre_ID
 FROM BookDetails
 GROUP BY Genre_ID
-HAVING Genre_ID = “F”;
+HAVING Genre_ID = "F";
 
-/*Self Join Query- shows which authors write together and contribute to the feeling of a book, or can be searched for, for the rest of the series.*/
-SELECT A.Author_ID, B.Author_ID_2
-FROM Titles A
-INNER JOIN Titles B
-ON A.Book_ID = B.Book_ID AND B.Author_ID_2 > 1;
-
+/*Join Query - Combines author names, Titles and basic information, and availability*/
 SELECT B.Last_Name, B.First_Name, A.Title, C.Genre_ID, C.Series, C.ISBN, D.Library_ID, E.Format_App
 FROM Titles A
 JOIN Authors B
-ON A.Author_ID = B.Author_ID 
+ON A.Author_ID = B.Author_ID OR A.Author_ID_2 = B.Author_ID 
 JOIN BookDetails C
 ON A.Book_ID = C.Book_ID
 JOIN Availability D
@@ -244,3 +240,9 @@ ON A.Book_ID = D.Book_ID
 JOIN LibrariesFormatsApps E
 ON D.Library_ID = E.ID
 ORDER BY B.Last_Name, A.Title;
+
+/*Self Join Query- shows which authors write together and contribute to the feeling of a book, or can be searched for, for the rest of the series.*/
+SELECT A.Author_ID, B.Author_ID_2
+FROM Titles A
+INNER JOIN Titles B
+ON A.Book_ID = B.Book_ID AND B.Author_ID_2 > 1;
