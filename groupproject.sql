@@ -1,6 +1,7 @@
 /*Group Members: Jacquelyn Conrad, Sarah Allmendinger, Reagan Asher
 Project: Book Database
 */
+Drop Database GroupProject;
 CREATE DATABASE GroupProject;
 USE GroupProject;
 
@@ -104,7 +105,7 @@ VALUES (
 ((3), (14), (8), ("Queen's Own Fool")), 
 ((12), (NULL), (9), ('Fahrenheit 451')), 
 ((10), (NULL), (10), ('A Curious Beginning')),
-((7), (13), (11), ('The Heist')),
+((9), (13), (11), ('The Heist')),
 ((4), (NULL), (12), ('The Screaming Staircase')), 
 ((4), (NULL), (13), ('The Whispering Skull')), 
 ((4), (NULL), (14), ('The Hollow Boy')), 
