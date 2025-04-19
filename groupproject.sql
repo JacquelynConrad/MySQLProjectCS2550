@@ -94,38 +94,25 @@ VALUES (
 
 INSERT INTO Titles (Author_ID, Author_ID_2, Book_ID, Title)
 VALUES (
-(4), (NULL), (1), ('Dark Lord of Derkholm')), 
-((6), (NULL), (2), ('Dealing with Dragons')), 
-((5), (NULL), (3), ('Steelheart')), 
-((1), (NULL), (4), ('Anne of Green Gables')), 
-((1), (NULL), (5), ('Anne of Avonlea')), 
-((1), (NULL), (6), ('Anne of The Island')), 
-((1), (NULL), (7), ('Anne of Windy Poplars')), 
-((2), (12), (8), ("Queen's Own Fool")), 
-((10), (NULL), (9), ('Fahrenheit 451')), 
-((8), (NULL), (10), ('A Curious Beginning')),
-((7), (11), (11), ('The Heist')),
-((14), (NULL), (12), ('The Screaming Staircase')), 
-((14), (NULL), (13), ('The Whispering Skull')), 
-((14), (NULL), (14), ('The Hollow Boy')), 
-((14), (NULL), (15), ('The Creeping Shadow')), 
-((14), (NULL), (16), ('The Empty Grave')), 
-((3), (NULL), (17), ('Ella Enchanted')), 
-((9), (NULL), (18), ('Games in the Ballroom')), 
-((13),( NULL), (19), ('IT'));
-
-UPDATE titles
-SET Author_ID = Author_ID + 1
-WHERE Author_ID >= 3;
-
-UPDATE titles
-SET Author_ID_2 = Author_ID_2 + 1
-WHERE Author_ID_2 > 2;
-
-UPDATE Titles
-SET Author_ID = Author_ID + 1
-WHERE Author_ID > 0 AND Author_ID < 3;
-
+(6), (NULL), (1), ('Dark Lord of Derkholm')), 
+((8), (NULL), (2), ('Dealing with Dragons')), 
+((7), (NULL), (3), ('Steelheart')), 
+((2), (NULL), (4), ('Anne of Green Gables')), 
+((2), (NULL), (5), ('Anne of Avonlea')), 
+((2), (NULL), (6), ('Anne of The Island')), 
+((2), (NULL), (7), ('Anne of Windy Poplars')), 
+((3), (14), (8), ("Queen's Own Fool")), 
+((12), (NULL), (9), ('Fahrenheit 451')), 
+((10), (NULL), (10), ('A Curious Beginning')),
+((7), (13), (11), ('The Heist')),
+((4), (NULL), (12), ('The Screaming Staircase')), 
+((4), (NULL), (13), ('The Whispering Skull')), 
+((4), (NULL), (14), ('The Hollow Boy')), 
+((4), (NULL), (15), ('The Creeping Shadow')), 
+((4), (NULL), (16), ('The Empty Grave')), 
+((5), (NULL), (17), ('Ella Enchanted')), 
+((11), (NULL), (18), ('Games in the Ballroom')), 
+((14),( NULL), (19), ('IT'));
 
 INSERT INTO Genres (Genre_ID, Genre)
 VALUES (
@@ -228,11 +215,11 @@ FROM bookDetails;
 
 SELECT * 
 FROM Availability;
+
 /*Single Table Query- Presents the books with multiple authors*/
 SELECT (Book_ID, Title)
 FROM Titles
 WHERE Author_ID_2 > 1;
-
 
 /*Group By Query - Finds the number of books that are fantasy*/
 SELECT  COUNT(*), Genre_ID
@@ -246,3 +233,14 @@ FROM Titles A
 INNER JOIN Titles B
 ON A.Book_ID = B.Book_ID AND B.Author_ID_2 > 1;
 
+SELECT B.Last_Name, B.First_Name, A.Title, C.Genre_ID, C.Series, C.ISBN, D.Library_ID, E.Format_App
+FROM Titles A
+JOIN Authors B
+ON A.Author_ID = B.Author_ID 
+JOIN BookDetails C
+ON A.Book_ID = C.Book_ID
+JOIN Availability D
+ON A.Book_ID = D.Book_ID
+JOIN LibrariesFormatsApps E
+ON D.Library_ID = E.ID
+ORDER BY B.Last_Name, A.Title;
