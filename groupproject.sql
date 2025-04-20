@@ -1,7 +1,6 @@
 /*Group Members: Jacquelyn Conrad, Sarah Allmendinger, Reagan Asher
 Project: Book Database
 */
-DROP DATABASE GroupProject;
 CREATE DATABASE GroupProject;
 USE GroupProject;
 
@@ -247,3 +246,11 @@ SELECT A.Author_ID, B.Author_ID_2
 FROM Titles A
 INNER JOIN Titles B
 ON A.Book_ID = B.Book_ID AND B.Author_ID_2 > 1;
+
+/*Aggregate Query- Shows the title and price of the books that are less than average price.*/
+SELECT Title, Price
+FROM titles t, bookdetails d
+WHERE Price < (SELECT AVG(Price)
+FROM bookdetails
+WHERE t.Book_ID = d.Book_ID)
+ORDER BY Price DESC, Title DESC;
